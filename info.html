@@ -1,1 +1,47 @@
+/* Container turns on flexbox and manages spacing */
+.column-container {
+  display: flex;
+  gap: 20px; /* Space between columns */
+  width: 100%;
+}
 
+/* Base styles for all three columns */
+.column {
+  flex: 1; /* Distributes space equally among columns */
+  padding: 15px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+}
+
+/* Responsive adjustment for mobile devices */
+@media (max-width: 768px) {
+  .column-container {
+    flex-direction: column; /* Stacks columns vertically on smaller screens */
+  }
+}
+
+<body>
+<div class="column-container">
+  <div class="column">
+    <h2>MENDING</h2>
+    <p>SASHIKO IS A MENDING TECHNIQUE CREATED<br>OUT OF NECESSITY IN JAPAN'S EDO ERA BY<br>THE WORKING CLASS, ALLOWED TO WEAR ONLY<br>CHEAP, THIN + ROUGH FABRICS.<br>
+THEY PATCHED HOLES IN GARMENTS + LAYERED<br>THIN TEXTILES FOR WARMTH, HELD TOGETHER<br>BY RUNNING STITCHES AND GEOMETRIC<br>PATTERNS OF COTTON THREAD.
+THE MENDING ITSELF IS NOTICABLE + DECORATIVE
+
+THE WEAR OR RIP OR TEAR BECOMES AN OPPORTUNITY
+
+NOT REALLY JUST TO HIDE THE GARMENT'S FLAWS, BUT TO MAKE AN OBJECT NEW AGAIN
+
+TO PROVIDE NEW VALUE
+TO YOUR WELL-FITTING, WORN-IN GARMENTS, IN A TIME WHERE WE ARE ENCOURAGED TO THROW IT AWAY AND BUY NEW.</p>
+  </div>
+  <div class="column">
+    <h2>Column 2</h2>
+    <p>This is the content for your second column.</p>
+  </div>
+  <div class="column">
+    <h2>Column 3</h2>
+    <p>This is the content for your third column.</p>
+  </div>
+</div>
+</body>
