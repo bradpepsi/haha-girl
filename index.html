@@ -57,76 +57,11 @@
         }
 
         .cross {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    background: url('cross.png') center / contain no-repeat;
-    opacity: 0;
-}
-
-.cross.on {
-    animation: stitch var(--dur, 4s) steps(1, end) forwards;
-}
-
-@keyframes stitch {
-    0%   { opacity: 1; }
-    100% { opacity: 0; }
-}
-        @media (prefers-reduced-motion: reduce) {
-            .cross.on { animation-duration: 0.01s; }
-        }
-    </style>
-</head>
-<body>
-    <div id="stitches"></div>
-    <h1>FUNCTION REFORM</h1>
-    <p>INFO<br>ARCHIVE<br>CONTACT</p>
-
-    <script>
-        const field = document.getElementById('stitches');
-        const CELL = 64;  // grid spacing in px
-        const SIZE = 24;  // cross size, match the CSS
-        const MAX  = 30;   // max crosses visible at once
-        let cells = [];
-
-        function build() {
-            field.innerHTML = '';
-            cells = [];
-            const cols = Math.floor(innerWidth / CELL);
-            const rows = Math.floor(innerHeight / CELL);
-            const offX = (innerWidth - cols * CELL) / 2;
-            const offY = (innerHeight - rows * CELL) / 2;
-
-            for (let r = 0; r < rows; r++) {
-                for (let c = 0; c < cols; c++) {
-                    const el = document.createElement('div');
-                    el.className = 'cross';
-                    el.style.left = offX + c * CELL + (CELL - SIZE) / 2 + 'px';
-                    el.style.top  = offY + r * CELL + (CELL - SIZE) / 2 + 'px';
-                    field.appendChild(el);
-                    cells.push(el);
-                }
-            }
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: url('cross.png') center / contain no-repeat; /* your PNG's filename */
+            opacity: 0;
         }
 
-        function tick() {
-            const active = cells.filter(el => el.classList.contains('on')).length;
-            if (active < MAX) {
-                const idle = cells.filter(el => !el.classList.contains('on'));
-                const el = idle[Math.floor(Math.random() * idle.length)];
-                if (el) {
-                    el.style.setProperty('--dur', (3 + Math.random() * 4) + 's');
-                    el.classList.add('on');
-                    el.addEventListener('animationend',
-                        () => el.classList.remove('on'), { once: true });
-                }
-            }
-            setTimeout(tick, 300 + Math.random() * 700);
-        }
-
-        build();
-        tick();
-        addEventListener('resize', build);
-    </script>
-</body>
-</html>
+        /*
