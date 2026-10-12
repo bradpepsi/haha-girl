@@ -8,20 +8,41 @@
         @font-face {
             font-family: 'Opus Chords Sans Condensed';
             src: url('OPUSCSC.woff') format('woff');
-   src: url('OPUSCSC.TTF') format('truetype');
+            src: url('OPUSCSC.TTF') format('truetype');
             font-weight: normal;
             font-style: normal;
-        }
+        } /* Closing brace added here */
+
         body {
-font-family: 'Opus Chords Sans Condensed', sans-serif; 
+            margin: 0;
+            min-height: 100vh;
         }
+
         h1 {
-            font-family: 'Opus Chords Sans Condensed', sans-serif; 
+            font-family: 'Opus Chords Sans Condensed', sans-serif;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            margin: 0;
+            padding: 0 1vw;
+            box-sizing: border-box;
+            font-size: 10vw;          
+            line-height: 1;
+            white-space: nowrap;
+            text-align: justify;
+            text-align-last: justify; 
+        }
+
+        p {
+            font-family: 'Lucinda Console', monospace;
+            padding: 0 1vw;
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
     <h1>FUNCTION REFORM</h1>
-    <p>Hello Hello Helllooooo</p> 
+    <p>INFO<br>ARCHIVE<br>CONTACT</p> 
 </body>
 </html>
