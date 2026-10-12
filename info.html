@@ -52,3 +52,63 @@
             padding: 150px 4.5vw 0;
             box-sizing: border-box;
         }
+
+        .column {
+            max-width: 400px;
+        }
+
+        .column h2 {
+            font-size: 15px;
+            font-weight: bold;
+            margin: 0 0 1.6em;
+        }
+
+        .column p {
+            margin: 0 0 1.6em;
+        }
+
+        /* variations seen in the mockup */
+        .column p.tight  { line-height: 1; }
+        .column p.right  { text-align: right; padding-left: 4em; }
+        .column p.gap    { margin-bottom: 3.5em; }
+
+        @media (max-width: 768px) {
+            .column-container {
+                grid-template-columns: 1fr;
+                gap: 2em;
+                padding-top: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="column-container">
+
+        <div class="column">
+            <h2>Mending</h2>
+            <p>Sashiko is a mending technique created out of necessity in Japan's Edo era by the working class, allowed to wear only cheap, thin + rough fabrics.</p>
+            <p>They patched holes in garments + layered thin textiles for warmth, held together by running stitches and geometric patterns of cotton thread.</p>
+            <p class="tight gap">The mending itself is noticeable + decorative</p>
+            <p class="tight right gap">The wear or rip or tear becomes an opportunity</p>
+            <p class="tight gap">Not really just to hide the garment's flaws, but to make an object new again</p>
+            <p>To provide new value</p>
+            <p class="tight">To your well-fitting, worn-in garments, in a time where we are encouraged to throw it away and buy new.</p>
+        </div>
+
+        <div class="column">
+            <h2>Pricing</h2>
+            <p>I typically charge around $15 an hour for mending work. The amount of time it would take to repair garment entirely depends on size and number of holes, preferred stitching pattern, + generally how difficult the fabric is to work with.</p>
+            <p>I can provide my best estimate of time and price upon request.</p>
+        </div>
+
+        <div class="column">
+            <h2>Custom</h2>
+            <p>When mending a garment, I typically default to a standard grid pattern.</p>
+            <p>For custom patterns, you can provide me with reference images or visit this site to design your own pattern.</p>
+        </div>
+
+    </div>
+
+    <h1>FUNCTION REFORM</h1>
+</body>
+</html>
