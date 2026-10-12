@@ -3,60 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  const CHANNEL_SLUG = 'your-channel-slug'; // e.g. 'Inspirations' or your slug
-const API_URL = `https://are.na{amelia-magee/function-reform}?per=100`;
-
-async function loadArenaGallery() {
-  const galleryContainer = document.getElementById('gallery');
-
-  try {
-    const response = await fetch(API_URL);
-    if (!response.ok) {
-      throw new Error(`Error fetching channel: ${response.status}`);
-    }
-
-    const data = await response.json();
-    const contents = data.contents;
-
-    // Clear the loading message
-    galleryContainer.innerHTML = '';
-
-    // Filter out only blocks that contain images
-    const imageBlocks = contents.filter(block => block.class === 'Image');
-
-    if (imageBlocks.length === 0) {
-      galleryContainer.innerHTML = '<p>No images found in this channel.</p>';
-      return;
-    }
-
-    imageBlocks.forEach(block => {
-      const imageUrl = block.image.display.url; // Options: thumb, display, large, original
-      const title = block.title || 'Untitled';
-      const description = block.description || '';
-
-      const itemEl = document.createElement('div');
-      itemEl.className = 'gallery-item';
-
-      itemEl.innerHTML = `
-        <a href="${block.image.original.url}" target="_blank" rel="noopener">
-          <img src="${imageUrl}" alt="${title}" loading="lazy">
-        </a>
-        <p><strong>${title}</strong></p>
-      `;
-
-      galleryContainer.appendChild(itemEl);
-    });
-
-  } catch (error) {
-    console.error('Failed to load Are.na board:', error);
-    galleryContainer.innerHTML = '<p>Failed to load gallery images.</p>';
-  }
-}
-
-loadArenaGallery();
-
- 
+  <title>Gallery</title>
   <style>
     body {
       margin: 2rem;
@@ -72,8 +19,6 @@ loadArenaGallery();
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
     }
     .gallery-item img {
       width: 100%;
@@ -81,19 +26,66 @@ loadArenaGallery();
       object-fit: cover;
       display: block;
     }
-    .gallery-item p {
-      padding: 0.75rem;
-      margin: 0;
-      font-size: 0.85rem;
-      color: #555;
-    }
   </style>
 </head>
 <body>
 
   <div id="gallery">Loading images...</div>
 
-  <script src="script.js"></script>
+  <script>
+    const CHANNEL_SLUG = 'do-u-want-to-look-at-this';
+    const API_URL = `https://api.are.na/v2/channels/${CHANNEL_SLUG}?per=100`;
+
+    function escapeHTML(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML.replace(/"/g, '&quot;');
+    }
+
+    async function loadArenaGallery() {
+      const galleryContainer = document.getElementById('gallery');
+
+      try {
+        const response = await fetch(API_URL);
+        if (!response.ok) {
+          throw new Error(`Error fetching channel: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const contents = data.contents || [];
+
+        galleryContainer.innerHTML = '';
+
+        const imageBlocks = contents.filter(block => block.class === 'Image');
+
+        if (imageBlocks.length === 0) {
+          galleryContainer.innerHTML = '<p>No images found in this channel.</p>';
+          return;
+        }
+
+        imageBlocks.forEach(block => {
+          const imageUrl = block.image.display.url;
+          const fullUrl = block.image.original.url;
+          const alt = escapeHTML(block.title || '');
+
+          const itemEl = document.createElement('div');
+          itemEl.className = 'gallery-item';
+          itemEl.innerHTML = `
+            <a href="${fullUrl}" target="_blank" rel="noopener">
+              <img src="${imageUrl}" alt="${alt}" loading="lazy">
+            </a>
+          `;
+
+          galleryContainer.appendChild(itemEl);
+        });
+
+      } catch (error) {
+        console.error('Failed to load Are.na board:', error);
+        galleryContainer.innerHTML = '<p>Failed to load gallery images.</p>';
+      }
+    }
+
+    loadArenaGallery();
+  </script>
 </body>
 </html>
-
