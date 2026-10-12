@@ -1,11 +1,10 @@
-<HTML>/* Container turns on flexbox and manages spacing */
+<HTML>
 .column-container {
   display: flex;
   gap: 20px; /* Space between columns */
   width: 100%;
 }
 
-/* Base styles for all three columns */
 .column {
   flex: 1; /* Distributes space equally among columns */
   padding: 15px;
@@ -13,7 +12,6 @@
   border-radius: 5px;
 }
 
-/* Responsive adjustment for mobile devices */
 @media (max-width: 768px) {
   .column-container {
     flex-direction: column; /* Stacks columns vertically on smaller screens */
