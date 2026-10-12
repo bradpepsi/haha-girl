@@ -57,25 +57,21 @@
         }
 
         .cross {
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            background: url('cross.png') center / contain no-repeat; /* your PNG's filename */
-            opacity: 0;
-            transform: scale(0) rotate(-90deg);
-        }
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: url('cross.png') center / contain no-repeat;
+    opacity: 0;
+}
 
-        .cross.on {
-            animation: stitch var(--dur, 4s) ease-in-out forwards;
-        }
+.cross.on {
+    animation: stitch var(--dur, 4s) steps(1, end) forwards;
+}
 
-        @keyframes stitch {
-            0%   { opacity: 0; transform: scale(0) rotate(-90deg); }
-            15%  { opacity: 1; transform: scale(1) rotate(0deg); }
-            80%  { opacity: 1; transform: scale(1) rotate(0deg); }
-            100% { opacity: 0; transform: scale(0) rotate(90deg); }
-        }
-
+@keyframes stitch {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+}
         @media (prefers-reduced-motion: reduce) {
             .cross.on { animation-duration: 0.01s; }
         }
