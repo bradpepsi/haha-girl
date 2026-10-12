@@ -1,39 +1,54 @@
-<HTML>
-.column-container {
-  display: flex;
-  gap: 20px; /* Space between columns */
-  width: 100%;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Reform</title>
+    <style>
+        @font-face {
+            font-family: 'Opus Chords Sans Condensed';
+            src: url('OPUSCSC.woff') format('woff'),
+                 url('OPUSCSC.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-.column {
-  flex: 1; /* Distributes space equally among columns */
-  padding: 15px;
-  background-color: #f4f4f4;
-  border-radius: 5px;
-}
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #fff;
+            color: #444;
+            font-family: 'Lucida Console', monospace;
+            font-size: 15px;
+            line-height: 1.35;
+            text-transform: uppercase;
+            padding-bottom: 20vw; /* keeps text clear of the fixed heading */
+        }
 
-@media (max-width: 768px) {
-  .column-container {
-    flex-direction: column; /* Stacks columns vertically on smaller screens */
-  }
-}
+        /* ---- big heading ---- */
+        h1 {
+            font-family: 'Opus Chords Sans Condensed', sans-serif;
+            color: #000;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            margin: 0;
+            padding: 0 1vw;
+            box-sizing: border-box;
+            font-size: 10vw;
+            line-height: 1;
+            white-space: nowrap;
+            text-align: justify;
+            text-align-last: justify;
+            z-index: 1;
+        }
 
-<body>
-<div class="column-container">
-  <div class="column">
-    <h2>MENDING</h2>
-    <p>SASHIKO IS A MENDING TECHNIQUE CREATED<br>OUT OF NECESSITY IN JAPAN'S EDO ERA BY<br>THE WORKING CLASS, ALLOWED TO WEAR ONLY<br>CHEAP, THIN + ROUGH FABRICS.<br>
-THEY PATCHED HOLES IN GARMENTS + LAYERED<br>THIN TEXTILES FOR WARMTH, HELD TOGETHER<br>BY RUNNING STITCHES AND GEOMETRIC<br>PATTERNS OF COTTON THREAD.
-THE MENDING ITSELF<BR></BR>IS NOTICABLE + DECORATIVE<br>THE WEAR OR RIP OR TEAR BECOMES AN OPPORTUNITY<br>NOT REALLY JUST TO HIDE THE GARMENT'S FLAWS,<br>BUT TO MAKE AN OBJECT NEW AGAIN<br>TO PROVIDE NEW VALUE<BR>TO YOUR WELL-FITTING, WORN-IN GARMENTS,<br>IN A TIME WHERE WE ARE ENCOURAGED<br>TO THROW IT AWAY AND BUY NEW.</p>
-  </div>
-  <div class="column">
-    <h2>PRICING</h2>
-    <p>I TYPICALLY CHARGE AROUND $15 AN HOUR<br>FOR MENDING WORK.THE AMOUNT OF TIME IT<br>WOULD TAKE TO REPAIR GARMENT ENTIRELY<br>DEPENDS ON SIZE AND NUMBER OF HOLES,<br>PREFERRED STITCHING PATTERN, + GENERALLY<br>HOW DIFFICULT THE FABRIC IS TO WORK WITH.<br>I CAN PROVIDE MY BEST ESTIMATE OF TIME<br>AND PRICE UPON REQUEST. </p>
-  </div>
-  <div class="column">
-    <h2>CUSTOM</h2>
-    <p>WHEN MENDING A GARMENT, I TYPICALLY<br>DEFAULT TO A STANDARD GRID PATTERN.<br>FOR CUSTOM PATTERNS, YOU CAN PROVIDE ME<br>WITH REFERENCE IMAGES OR VISIT THIS SITE<br>TO DESIGN YOUR OWN PATTERN.</p>
-  </div>
-</div>
-</body>
-</HTML>
+        /* ---- columns ---- */
+        .column-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4vw;
+            padding: 150px 4.5vw 0;
+            box-sizing: border-box;
+        }
